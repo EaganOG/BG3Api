@@ -1,5 +1,5 @@
 // Import the Express module
-import express from "express";
+import express, { urlencoded } from "express";
 
 // Import the CORS module
 import cors from 'cors';
@@ -23,3 +23,11 @@ app.listen(3000, () => {
 
 // Export the Express application. Other modules may use it. For example, API testing
 export default app;
+
+import armourRoutes from "./routes/index.mjs";
+
+app.use(express,urlencoded({extended: false}));
+
+app.use(express.json());
+
+app.use("/api/armour", armourRoutes);
